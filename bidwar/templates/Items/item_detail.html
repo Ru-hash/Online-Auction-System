@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+    
+      <small class="text-muted">{{ object.date_posted }}</small>
+      
+    </div>
+    <h2 class="article-title">{{object.name  }}</h2>
+    <p class="article-content">{{ object.description }}</p>
+    <p class="article-content">Price:{{ object.price }}</p>
+        {% if object.owner != user %}
+    <div>
+      <a class="btn btn-lg btn-primary text-uppercase" href="{% url 'Items:bid' object.id %}">Bid</a>
+    </div>
+    {% endif %}
+    {% if object.owner == user %}
+       <div>
+       <h4 class="article-title">Bidder:{{object.bidder  }}</h4>
+
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'Items:delete' object.id %}">Delete item</a>
+        </div>
+      {% endif %}
+  </div>
+</article>
+
+  
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<p><h3>New items for aution</h3></p>
+{% for obj in last %}
+	<article class="media content-section">	
+  <div class="media-body">
+    <div class="article-metadata">
+    
+      <small class="text-muted">{{ obj.date_posted }}</small>
+    </div>
+    <h2><a class="article-title" href="{% url 'Items:detail' obj.id%}">{{obj.name }}</a></h2>
+   <p class="article-content">{{ obj.description }}</p>
+  </div>
+</article>
+{% endfor %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      
+      <small class="text-muted">End!</small>
+    </div>
+    
+  </div>
+</article>
+  
+      <a class="nav-item nav-link" href="{% url 'Items:add' %}">Action your Item now!</a>
+
+
+
+{% endblock %}
